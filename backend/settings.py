@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'web',
     'configuracion',
-    'inventario',
     'reparto',
     'ventas',
     'corsheaders', # new
@@ -49,6 +48,8 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     ################# whitenoise ################
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    #############################################
+    'corsheaders.middleware.CorsMiddleware',
     #############################################
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -117,8 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Usuario personalizado
-AUTH_USER_MODEL = "web.Usuario"
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
