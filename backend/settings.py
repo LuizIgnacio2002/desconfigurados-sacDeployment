@@ -46,6 +46,9 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    ################# whitenoise ################
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    #############################################
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -53,6 +56,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# Configuración de CORS
+CORS_ALLOW_ALL_ORIGINS = True  # Esto permite todas las solicitudes desde cualquier origen
+
+
 
 ROOT_URLCONF = 'backend.urls'
 
@@ -80,8 +88,12 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'test_db_tytx',
+        'USER': 'test_db_tytx_user',
+        'PASSWORD': 'H7iMtHB3ScXKDh5qSSJdrzYJwuEYTRRO',
+        'HOST': 'dpg-cosepa21hbls73fjjmag-a.oregon-postgres.render.com',
+        'PORT': '5432',
     }
 }
 
@@ -125,6 +137,15 @@ USE_TZ = True
 STATIC_URL = 'static/'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media' 
+
+#################################################################
+# for deployment
+import os
+##  keeep as staticfiles for jasmine
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # new
+STATICFILES_DIRS  = [os.path.join(BASE_DIR, 'static')]  # new
+#################################################################
+################################################################# 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
