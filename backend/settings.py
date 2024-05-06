@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'inventario',
     'reparto',
     'ventas',
+    'corsheaders', # new
 ]
 
 MIDDLEWARE = [
