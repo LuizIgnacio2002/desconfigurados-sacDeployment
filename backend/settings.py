@@ -31,17 +31,20 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'django_filters',
+    'corsheaders',
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'web',
     'configuracion',
+    'inventario',
     'reparto',
     'ventas',
-    'corsheaders', # new
+    'web',
 ]
 
 MIDDLEWARE = [
@@ -118,6 +121,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Usuario personalizado
+AUTH_USER_MODEL = "web.Usuario"
 
 
 # Internationalization
@@ -150,5 +155,14 @@ STATICFILES_DIRS  = [os.path.join(BASE_DIR, 'static')]  # new
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
