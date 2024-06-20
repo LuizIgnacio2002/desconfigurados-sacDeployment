@@ -49,11 +49,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    ################# whitenoise ################
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-    #############################################
-    'corsheaders.middleware.CorsMiddleware',
-    #############################################
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -61,11 +56,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
-# Configuración de CORS
-CORS_ALLOW_ALL_ORIGINS = True  # Esto permite todas las solicitudes desde cualquier origen
-
-
 
 ROOT_URLCONF = 'backend.urls'
 
@@ -99,7 +89,6 @@ DATABASES = {
 }
 
 
-
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -121,7 +110,6 @@ AUTH_PASSWORD_VALIDATORS = [
 # Usuario personalizado
 AUTH_USER_MODEL = "web.Usuario"
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -141,17 +129,10 @@ STATIC_URL = 'static/'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media' 
 
-#################################################################
-# for deployment
-import os
-##  keeep as staticfiles for jasmine
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # new
-STATICFILES_DIRS  = [os.path.join(BASE_DIR, 'static')]  # new
-#################################################################
-################################################################# 
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
@@ -162,4 +143,5 @@ REST_FRAMEWORK = {
     ]
 }
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# Para todas las conexiones
+CORS_ORIGIN_ALLOW_ALL = True
