@@ -1,3 +1,4 @@
+
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.contrib.auth.models import Group
@@ -45,7 +46,6 @@ class Usuario(AbstractBaseUser):
     usuario_administrador = models.BooleanField(default=False)
     usuario_activo = models.BooleanField(default=True)
     fecha_registro = models.DateTimeField(auto_now_add=True)
-
     objects = UsuarioManager()
 
     USERNAME_FIELD = "username"
@@ -106,4 +106,3 @@ class Empleado(models.Model):
         verbose_name = "Empleado"
         verbose_name_plural = "Empleados"
 """
-
