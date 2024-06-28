@@ -8,7 +8,7 @@ class Pago(models.Model):
     monto = models.DecimalField("Monto total", max_digits = 16 , decimal_places = 2)
     fechahora_pago = models.DateTimeField("Fecha y hora de pago", auto_now_add = True)
     def __str__(self):
-        return f"{self.fecha_pago} {self.monto}"
+        return f"{self.monto}"
         #return str(self.fecha_pago)
     class Meta:
         verbose_name = "Pago"
@@ -22,7 +22,7 @@ class Orden(models.Model):
     entrega = models.ForeignKey(Entrega, on_delete = models.CASCADE, blank = True, null = True, verbose_name = "Entrega")
     estado_orden = models.ForeignKey(EstadoOrden, on_delete = models.CASCADE, verbose_name = "Estado de la orden")
     def __str__(self):
-        return f"{self.cliente} {self.fechahora_orden}"
+        return f"{self.cliente}"
     class Meta:
         verbose_name = "Orden"
         verbose_name_plural = "Órdenes"
