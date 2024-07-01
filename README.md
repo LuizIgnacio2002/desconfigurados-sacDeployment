@@ -1,4 +1,4 @@
-# Backend del proyecto Ecommerce Smart Tachito
+# Backend del proyecto Ecommerce Smart Tachito :3
 
 ## Descripción del Proyecto Django
 
